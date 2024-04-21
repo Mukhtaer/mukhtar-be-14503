@@ -19,7 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/movies', 'App\Http\Controllers\MovieController@index');
-// Route::get('/movies/{id}', 'App\Http\Controllers\MovieController@show');
 Route::post('/add_movie', 'App\Http\Controllers\MovieController@add_movie');
 Route::get('/genre', 'App\Http\Controllers\GenreController@index');
 Route::get('/timeslot', 'App\Http\Controllers\TimeSlotController@index');
