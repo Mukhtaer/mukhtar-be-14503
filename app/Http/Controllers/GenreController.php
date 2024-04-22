@@ -27,19 +27,19 @@ class GenreController extends Controller
 
         $formattedMovies =  [];
         foreach ($movies as $movie) {
-            $formattedMovies[] = $this->formatMovie($movie);
+            $formattedMovies[] = $this->formatMovie($movie, $genre);
         }
 
         return response()->json(['data' => $formattedMovies]);
     }
 
-    function formatMovie($movie)
+    function formatMovie($movie, $genre)
     {
         return [
             'Movie_ID' => $movie->id,
             'Title' => $movie->title,
-            'Genre' => $movie->genre,
-            'Duration' => $movie->duration,
+            'Genre' => $genre,
+            'Duration' =>   HelperController::convertLengthToHours($movie->length),
             'Views' => HelperController::convertViewToKM($movie->views),
             'Poster' => $movie->poster,
             'Overall_rating' => $movie->overall_rating,
